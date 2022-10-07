@@ -1,30 +1,34 @@
 #include "monty.h"
 
 /**
- * free_stack - frees the stack on exit
- * @status: exit status
- * @arg: double pointer to the stack
- *
- * Return: void
- */
-void free_stack(int status, void *arg)
+* free_stack - function that frees a doubly linked list
+* @head: head pointer to the stack
+*
+* Return: nothing
+*/
+void free_stack(stack_t *head)
 {
-	stack_t **stack;
-	stack_t *next;
+	stack_t *temp;
 
-	(void)status;
+	temp = head;
+	while (head)
+	{
+		temp = head->next;
+		free(head);
+		head = temp;
+	}
+}
 
-	stack = (stack_t **)arg;
-	if (*stack)
-	{
-		(*stack)->prev->next = NULL;
-		(*stack)->prev = NULL;
-	}
-	while (*stack != NULL)
-	{
-		next = (*stack)->next;
-		free(*stack);
-		*stack = next;
-	}
-	var.stack_len = 0;
+/**
+* f_stack - function that prints the top
+* @head: head of stack
+* @counter: line count
+*
+* Return: nothing
+*/
+void f_stack(stack_t **head, unsigned int counter)
+{
+	(void)head;
+	(void)counter;
+	bus.lifi = 0;
 }
